@@ -1,18 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-  <h1>Cristian P1</h1>
-  <h2>Iniciar sesión</h2>
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Iniciar sesión</button>
-  </form>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ejemplo de enlace a un archivo CSS en una plantilla -->
+  {% load static %}
+  <link href="{% static 'css/login.css' %}" rel="stylesheet">
+  <title>Login-RST</title>
+</head>
+
+<body>
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="prueba">
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">Bienvenido</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form class="login tex-ali" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="field">
+              <label class="text-inputForm" for="id_username">Usuario:</label>
+              <i class="inputForm">{{ form.username }}</i>
+            </div>
+            <div class="field">
+              <label class="text-inputForm" for="id_username">Codigo:</label>
+              <i class="inputForm">{{ form.password }}</i>
+            </div>
+            <button class="buttonLogin" type="submit">Iniciar sesión</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
 </body>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<footer class="prueba-foot footer-login">
+  <div class="text-food">
+    <strong>RST Asociados todos los derechos revervados.</strong>
+  </div>
+  <div class="footer-bar">
+    <div class="bar-segment"></div>
+    <div class="bar-segment"></div>
+    <div class="bar-segment"></div>
+    <div class="bar-segment"></div>
+    <div class="bar-segment"></div>
+    <div class="bar-segment"></div>
+  </div>
+</footer>
+
 </html>

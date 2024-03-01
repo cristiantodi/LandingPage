@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
 </head>
+
 <body>
-  <h1>Cristian P2</h1>
   {% block content %}
-    <h2>Datos del usuario</h2>
-    {# Muestra los datos del usuario según tus necesidades #}
+  {# Muestra los datos del usuario según tus necesidades #}
+
+  <h1>Bienvenido!</h1>
+  <p>username: {{ user.username }}</p>
+  <p>fullName: {{ user.fullName }}</p>
+  <p>obligacion: {{ user.obligacion }}</p>
+  <p>valor_proxima_cuota: {{ user.valor_proxima_cuota }}</p>
+  <p>nro_cuota_pagada: {{ user.nro_cuota_pagada }}</p>
+  <p>nro_cuota_pactada: {{ user.nro_cuota_pactada }}</p>
+  <p>Banca: {{ user.banca }}</p>
+  <p>producto: {{ user.producto }}</p>
+  <p>destino_credito: {{ user.destino_credito }}</p>
+  <p>fecha_desembolso: {{ user.fecha_desembolso }}</p>
+  <p>dias_mora: {{ user.dias_mora }}</p>
+  <p>fecha_pago: {{ user.fecha_pago }}</p>
+  <p>frecuencia_pago: {{ user.frecuencia_pago }}</p>
+  <p>valor_original: {{ user.valor_original }}</p>
+  <p>saldo_capital: {{ user.saldo_capital }}</p>
+  <p>saldo_total: {{ user.saldo_total }}</p>
+  <p>intereses_mora: {{ user.intereses_mora }}</p>
+  <p>otros_conceptos: {{ user.otros_conceptos }}</p>
   {% endblock %}
 
 </body>
+
 </html>

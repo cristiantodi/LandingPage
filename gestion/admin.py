@@ -6,8 +6,8 @@ from import_export.admin import ImportExportModelAdmin
 
 class CustomUserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     # personaliza la representación del modelo en el administrador si es necesario
-    list_display = ['id','nombre','contrasena']
+    list_display = ['id','nombre', 'fullName','contrasena']
     readonly_fields= ('created','updated')
 
-# admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
 
