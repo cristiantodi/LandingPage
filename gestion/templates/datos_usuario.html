@@ -1,37 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-</head>
+<title>{% block tittle %} RST - Acuerdo de Pago {% endblock %}</title>
 
-<body>
-  {% block content %}
-  {# Muestra los datos del usuario según tus necesidades #}
+{% load static %}
 
-  <h1>Bienvenido!</h1>
-  <p>username: {{ user.username }}</p>
-  <p>fullName: {{ user.fullName }}</p>
-  <p>obligacion: {{ user.obligacion }}</p>
-  <p>valor_proxima_cuota: {{ user.valor_proxima_cuota }}</p>
-  <p>nro_cuota_pagada: {{ user.nro_cuota_pagada }}</p>
-  <p>nro_cuota_pactada: {{ user.nro_cuota_pactada }}</p>
-  <p>Banca: {{ user.banca }}</p>
-  <p>producto: {{ user.producto }}</p>
-  <p>destino_credito: {{ user.destino_credito }}</p>
-  <p>fecha_desembolso: {{ user.fecha_desembolso }}</p>
-  <p>dias_mora: {{ user.dias_mora }}</p>
-  <p>fecha_pago: {{ user.fecha_pago }}</p>
-  <p>frecuencia_pago: {{ user.frecuencia_pago }}</p>
-  <p>valor_original: {{ user.valor_original }}</p>
-  <p>saldo_capital: {{ user.saldo_capital }}</p>
-  <p>saldo_total: {{ user.saldo_total }}</p>
-  <p>intereses_mora: {{ user.intereses_mora }}</p>
-  <p>otros_conceptos: {{ user.otros_conceptos }}</p>
-  {% endblock %}
+{% block static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-</body>
 
-</html>
+<link href="{% static 'css/master.css' %}" rel="stylesheet">
+<script src="{% static 'js/master.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+<div class="head-nav">
+  <div class="head-nav">
+    <div>
+      <img class="animation__shake" src="<?= base_url(); ?>/assets/dist/img/fna.png" alt="Img Logo" height="60"
+        width="60">
+    </div>
+
+    <div class="closed-session">
+      <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% load custom_filters %}
+<div class="conten">
+  <div class="conten-name">
+    <div class="card-name">
+      <p class="text-center saludo">Bienvenido!</p>
+      <p class="text-name">Sr(a). {{ user.fullName }}</p>
+    </div>
+  </div>
+  <!-- <section class="content"> -->
+  <div class="conten-inf">
+    <div class="containerr">
+      <div class="block-data" data-toggle="modal" data-target="#myModal">
+        <div class="block-source">
+          <span class="name-data">OBLIGACIÓN: </span>
+          <div class="result-data">
+            <p style="height: 50%;">{{ user.obligacion|obligacion_format }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="block-data">
+        <div class="block-source">
+          <span class="name-data">FECHA DE VENCIMIENTO: </span>
+          <div class="result-data">
+            <p style="height: 50%;">{{ user.fecha_pago }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="block-data">
+        <div class="block-source">
+          <span class="name-data">SALDO TOTAL APROX.:</span>
+          <div class="result-data">
+            <p style="height: 50%;">{{ user.saldo_total }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="block-data">
+        <div class="block-source">
+          <span class="name-data">VALOR A PAGAR APROX.:</span>
+          <div class="result-data">
+            <p style="height: 50%;">{{ user.saldo_capital }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="text-info">
+      Le informamos que los datos suministrados por usted serán tratados de acuerdo a la política de protección de datos
+      personales y la Ley 1581 de 2012.
+    </p>
+  </div>
+</div>
+
+<!-- -------------------------------------------------Contenedor # 1---------------------------------------------------- -->
+<!-- Modal-1 -->
+<div class="modal" id="myModal">
+  <div class="cont-one">
+    <div class="modal-content">
+      <!-- Contenido del modal -->
+      <div class="modal-header">
+        <h4 class="modal-title">Gestión de Obligación</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenido del contenedor para la obligación seleccionada -->
+        <div class="modal-body-text">
+          <p class="modal-p">Su obligación registra {{ user.dias_mora }} días en mora.</p>
+        </div>
+        <div class="modal-body-text">
+          <p class="modal-p">¿Podemos contar con el pago de esta obligación para los próximos 3 días?</p>
+        </div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSi">
+          Si
+        </button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalNo">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------Contenedor # 2---------------------------------------------------- -->
+<!-- Modal-1 -->
+<div class="modal" id="modalSi">
+  <div class="cont-one">
+    <div class="modal-content">
+      <!-- Contenido del modal -->
+      <div class="modal-header">
+        <h4 class="modal-title">Gestión de Obligación</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenido del contenedor para la obligación seleccionada -->
+        <div class="modal-body-text">
+          <h3 >Hecho !</h3>
+          <p class="modal-p">Recuerde que su obligación vence el <span id="fecha-actual"></span> por 
+            un valor aproximado de ${{ user.nro_cuota_pactada}}. Cuando realice el pago, por favor valide el valor.</p>
+
+        </div>
+        <div class="modal-body-text">
+          <p class="modal-p">¿Podemos contar con el pago de esta obligación para los próximos 3 días?</p>
+        </div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalOtro">
+          Si
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="cerrarModales()">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------Contenedor # No---------------------------------------------------- -->
+<!-- Modal-No -->
+<div class="modal" id="modalNo">
+  <div class="cont-one">
+    <div class="modal-content">
+      <!-- Contenido del modal -->
+      <div class="modal-header">
+        <h4 class="modal-title">Gestión de Obligación</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenido del contenedor para la obligación seleccionada -->
+        <div class="modal-body-text">
+          <p class="modal-p">¿Desea agregar algún comentario sobre el pago de su obligación?</p>
+        </div>
+        <div class="modal-body-text">
+          <p class="modal-p">?</p>
+        </div>
+        <!-- Botones para cerrar los modales -->
+        <button type="button" class="btn btn-secondary" onclick="cerrarModales()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------- -->
+
+{% endblock %}

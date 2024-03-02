@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block tittle %} RST {% endblock %}</title>
+
+    {% load static %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    {% block static %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+    {% block header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <footer class="prueba-foot footer-login">
+        <div class="text-food">
+            <strong>RST Asociados todos los derechos revervados.</strong>
+        </div>
+        <div class="footer-bar">
+            <div class="bar-segment"></div>
+            <div class="bar-segment"></div>
+            <div class="bar-segment"></div>
+            <div class="bar-segment"></div>
+            <div class="bar-segment"></div>
+            <div class="bar-segment"></div>
+        </div>
+    </footer>
+    {% endblock %}
+</body>
+
+</html>

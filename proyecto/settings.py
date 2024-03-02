@@ -46,6 +46,10 @@ INSTALLED_APPS = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 MIDDLEWARE = [
+    'django.contrib.sessions.middleware.SessionMiddleware', # cierre de sesion automatico
+
+    'gestion.middleware.NotFoundRedirectMiddleware',    # redirige al encontrar error 404
+
     'django.middleware.csrf.CsrfViewMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +137,7 @@ AUTH_USER_MODEL = 'users.User'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Duración de la sesión en segundos, define el tiempo de expiración de la cookie de sesión.
+SESSION_COOKIE_AGE = 2000
+LOGIN_URL = '/login'

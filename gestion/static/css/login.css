@@ -25,7 +25,7 @@ html,
 body {
     font-size: 62.5%;
     display: grid;
-    height: 100%;
+    height: 90vh;
     width: 100%;
     place-items: center;
     background-image: url(/assets/dist/img/fondo3.png);
@@ -41,7 +41,7 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-    height: 66%;
+    height: 100%;
     border-color: var(--white);
     border-width: 3px 3px 0 0;
     border-style: solid;
@@ -88,11 +88,12 @@ body {
 
 .form-container .form-inner {
     display: flex;
-    width: 200%;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .form-container .form-inner form {
-    width: 50%;
+    width: 100%;
     transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -195,6 +196,7 @@ form .txt_field {
 }
 
 .buttonLogin {
+    margin-top: 17%;
     width: 50%;
     height: 50px;
     border: 1px solid;
@@ -209,6 +211,7 @@ form .txt_field {
 }
 
 .prueba {
+    height: 50%;
     margin: 2px;
     padding: 8px 2px 2px 8px;
     box-sizing: border-box;
@@ -231,8 +234,11 @@ form .txt_field {
 
 .text-food {
     text-align: center;
-    margin-top: auto;
-    font-size: var(--xm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: auto; */
+    font-size: var(--xxl);
     color: var(--blue-dark);
 }
 
@@ -250,10 +256,14 @@ footer {
 }
 
 .footer-login {
-    border-radius: 100% 100% 0px 0px;
-    height: 8%;
+    height: 10vh;
+    display: flex;
     background: var(--white);
     padding-top: 1rem;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+    border-radius: 100% 100% 0px 0px;
 }
 
 .bar-segment {
@@ -315,9 +325,22 @@ footer {
 }
 
 .text-inputForm {
-    color: red;
+    color: var(--white);
     font-size: x-large;
     font-weight: bold;
+}
+
+
+/* Para navegadores basados en WebKit (como Chrome y Safari) */
+.field i.inputForm input[type="number"]::-webkit-inner-spin-button,
+.field i.inputForm input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Para navegadores que no son WebKit (como Firefox) */
+.field i.inputForm input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 @media (max-width: 640px) {
@@ -370,33 +393,15 @@ footer {
         height: 44rem;
     }
 
-    .prueba-foot {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f2f2f200;
-        padding-bottom: 10px;
-        text-align: center;
-    }
-
     .text-food {
-        position: fixed;
-        bottom: 0;
-        font-size: small;
-        width: 100%;
-        /* background-color: #f2f2f200; */
-        padding: 5%;
-        text-align: center;
-    }
-
-    .footer-login {
-        border-radius: 100% 100% 0px 0px;
-        height: 8%;
-        background: var(--white);
+        font-size: var(--xs);
     }
 
     .form-inner form .field input::placeholder {
         font-size: var(--xs);
+    }
+
+    .buttonLogin {
+        width: 70%;
     }
 }

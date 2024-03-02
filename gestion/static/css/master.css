@@ -1,0 +1,225 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --blue-dark: #004265;
+    --text-input-field: #f6f6f6;
+    --button-yes: #008d36;
+    --button-no: #e94e1b;
+    --button-save: #f09d0c;
+    --sm: 0.8rem;
+    --md: 1rem;
+    --lg: 1.12rem;
+    --xs: 1.5rem;
+    --xm: 2rem;
+    --xxl: 2.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    font-size: 62.5%;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.head-nav {
+    display: flex;
+    font-size: large;
+    width: 100%;
+    height: 5vh;
+    background-color: #f0000000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closed-session a {
+    /* color: rgb(228, 6, 6); */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.conten {
+    height: 100%;
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.card-name {
+    text-align: center;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0rem 1rem 0rem 1rem;
+}
+
+.saludo {
+    font-size: xxx-large;
+    font-weight: bold;
+    /* margin-top: 5%; */
+    color: #003685;
+    height: 100%;
+}
+
+
+.text-name {
+    text-align: center;
+    font-size: x-large;
+    margin: 1rem 0 1rem 0;
+    font-weight: bold;
+    color: #003685;
+}
+
+/* ---------------------------------- */
+.card-tabla {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0rem;
+}
+
+.obligacion {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -7.5px;
+    margin-left: -7.5px;
+    margin: 4% 0 0 0;
+}
+
+.table-respon {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.conten-inf {
+    margin-top: 5%;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.containerr {
+    margin: 0 0 0 2rem;
+    display: flex;
+    font-size: initial;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    justify-items: start;
+    flex-direction: column;
+    width: 50%;
+}
+
+.block-data {
+    background: #71B91B;
+    width: 100%;
+    border-radius: 9px;
+    margin: 1px;
+}
+
+.block-source {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    color: white;
+}
+
+.name-data {
+    padding: 0 0.2rem 0 0.5rem;
+    font-weight: bold;
+    font-size: large;
+    width: 100%;
+}
+
+.result-data {
+    justify-content: center;
+    font-weight: bold;
+    background: white;
+    color: black;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin: 0 2% 0px;
+    border-radius: 6px;
+}
+
+.text-info {
+    font-size: small;
+    text-align: center;
+    padding: 4% 2% 0 2%;
+    font-weight: 600;
+    color: #003685 !important;
+}
+
+.conten-name {
+    height: 10rem;
+    margin-top: 10%;
+
+}
+
+/* ----------------------------------- Contenedor # 1------------------------------------------------------------------ */
+
+.cont-one {
+    width: 60%;
+    margin: 20% 20% 20% 20%;
+}
+
+.modal-header {
+    background-color: #424949;
+    color: #FDFEFE;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.modal-body {
+    position: relative;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.modal-body-text {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    color: inherit;
+}
+
+.modal-p {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: large;
+    font-weight: 500;
+}
