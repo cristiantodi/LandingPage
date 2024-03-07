@@ -6,11 +6,11 @@ from django.contrib.auth.hashers import make_password
 
 class User(AbstractUser):
     username            = models.CharField(max_length=150, unique=True)
-    password            = models.CharField(max_length=128)
+    password            = models.CharField(max_length=500)
     fullName            = models.CharField(max_length=128)
     obligacion          = models.CharField(max_length=128)
     valor_proxima_cuota = models.CharField(max_length=128, blank=True, null=True)
-    nro_cuota_pagada   = models.CharField(max_length=128, blank=True, null=True)
+    nro_cuota_pagada    = models.CharField(max_length=128, blank=True, null=True)
     nro_cuota_pactada   = models.CharField(max_length=128, blank=True, null=True)
     banca               = models.CharField(max_length=128, blank=True, null=True)
     producto            = models.CharField(max_length=128, blank=True, null=True)
@@ -36,3 +36,17 @@ class User(AbstractUser):
     def __str__(self):
         return str(self.username )
     pass 
+
+class gestionCustomer(models.Model):
+    obligacion      = models.ForeignKey(User, on_delete=models.CASCADE, related_name='gestioncustomer_obligacion')
+    fullNombre      = models.ForeignKey(User, on_delete=models.CASCADE, related_name='gestioncustomer_fullNombre')
+    identificacion  = models.ForeignKey(User, on_delete=models.CASCADE, related_name='gestioncustomer_identificacion')
+    acuerdo_pago    = models.CharField(max_length=300, blank=True, null=True)
+    autorizacion    = models.BooleanField(default=True)
+    observacion     = models.CharField(max_length=300, blank=True, null=True)
+    comentario      = models.CharField(max_length=300, blank=True, null=True)
+    created         = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated         = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    # Otros campos del modelo...
+    def __str__(self):
+        return f"{self.observacion} - {self.comentario}"

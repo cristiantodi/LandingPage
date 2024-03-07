@@ -1,13 +1,14 @@
 from django.contrib import admin
 # from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser
+from .models import InformacionModelo
 
-from import_export.admin import ImportExportModelAdmin
+# Register your models here
 
-class CustomUserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    # personaliza la representación del modelo en el administrador si es necesario
-    list_display = ['id','nombre', 'fullName','contrasena']
-    readonly_fields= ('created','updated')
 
-admin.site.register(CustomUser, CustomUserAdmin)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['id',
+                'observacion',
+                'comentario',
+                ]
 
+admin.site.register(InformacionModelo, ContactAdmin)

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from users.models import User
+from users.models import User, gestionCustomer
 from import_export.admin import ImportExportModelAdmin
 from .resources import MiModeloResource
 # Register your models here.
@@ -31,5 +31,22 @@ class UserAdmin(ImportExportModelAdmin, BaseUserAdmin):
                     'otros_conceptos',
                     ]
     
-# admin.site.register(User, UserAdmin)
 
+    
+class gestionCustomerAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    # personaliza la representación del modelo en el administrador si es necesario
+    list_display = ['id',
+                    'obligacion',
+                    'fullNombre', 
+                    'identificacion',
+                    'acuerdo_pago',                    
+                    'autorizacion',
+                    'observacion',
+                    'comentario',
+                    'created',
+                    'updated',
+                ]
+    readonly_fields= ('created','updated')
+
+# admin.site.register(User, UserAdmin)
+admin.site.register(gestionCustomer, gestionCustomerAdmin)

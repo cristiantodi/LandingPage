@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -139,5 +138,5 @@ AUTH_USER_MODEL = 'users.User'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Duración de la sesión en segundos, define el tiempo de expiración de la cookie de sesión.
-SESSION_COOKIE_AGE = 2000
-LOGIN_URL = '/login'
+SESSION_COOKIE_AGE = 120
+LOGIN_URL = '/login/'

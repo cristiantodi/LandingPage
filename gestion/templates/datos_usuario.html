@@ -3,7 +3,7 @@
 <title>{% block tittle %} RST - Acuerdo de Pago {% endblock %}</title>
 
 {% load static %}
-
+<script type="text/javascript" src="{% static 'js/master.js' %}"></script>
 {% block static %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -16,14 +16,16 @@
 
 
 <link href="{% static 'css/master.css' %}" rel="stylesheet">
-<script src="{% static 'js/master.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/master.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 {% endblock %}
 
 {% block header %}
 <div class="head-nav">
   <div class="head-nav">
     <div>
-      <img class="animation__shake" src="<?= base_url(); ?>/assets/dist/img/fna.png" alt="Img Logo" height="60"
+      <img class="animation__shake" src="?= base_url(); ?>/assets/dist/img/fna.png" alt="Img Logo" height="60"
         width="60">
     </div>
 
@@ -130,20 +132,40 @@
       <div class="modal-body">
         <!-- Contenido del contenedor para la obligación seleccionada -->
         <div class="modal-body-text">
-          <h3 >Hecho !</h3>
-          <p class="modal-p">Recuerde que su obligación vence el <span id="fecha-actual"></span> por 
+          <h3>Hecho !</h3>
+          <p class="modal-p">Recuerde que su obligación vence el <span id="fecha-actual"></span> por
             un valor aproximado de ${{ user.nro_cuota_pactada}}. Cuando realice el pago, por favor valide el valor.</p>
-
         </div>
         <div class="modal-body-text">
           <p class="modal-p">¿Podemos contar con el pago de esta obligación para los próximos 3 días?</p>
         </div>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalOtro">
-          Si
-        </button>
-        <button type="button" class="btn btn-secondary" onclick="cerrarModales()">
-          No
-        </button>
+        <!-- --------------------------------------------------------- -->
+        <!-- Tu formulario -->
+        <!-- <form id="contactForm" method="POST" action="{% url 'datos_usuario' %}">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+            <button type="submit" class="btn btn-secondary" onclick="enviarFormulario()">Si</button>
+            <button type="button" class="btn btn-secondary" onclick="cerrarModales()">No</button>
+        </form> -->
+        <form id="contactForm" method="POST" action="{% url 'datos_usuario' %}">
+          {% csrf_token %}
+          {% for field in form %}
+            {{ field }}
+          {% endfor %}
+          <button type="submit" class="btn btn-secondary" onclick="submitFormAndCloseSession()">Si</button>
+          <button type="button" class="btn btn-secondary" onclick="cerrarModales()">No</button>
+        </form>
+        <!-- <form id="contactForm" method="POST" action="{% url 'datos_usuario' %}">
+          {% csrf_token %}
+          {% for field in form %}
+              {{ field }}
+          {% endfor %}
+          <button type="submit" class="btn btn-secondary">Si</button>
+          <button type="button" class="btn btn-secondary" onclick="cerrarModales()">No</button>
+        </form> -->
+
       </div>
     </div>
   </div>
@@ -175,7 +197,4 @@
     </div>
   </div>
 </div>
-
-<!-- ------------------------------------------------------------------------------------------------------------------- -->
-
 {% endblock %}
